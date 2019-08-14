@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Navbar from "./components/navbar";
 import Jumbotron from "./components/jumbotron";
-import Search from "./components/search";
-import Results from "./components/results";
+// import Search from "./components/search";
+// import Results from "./components/results";
 import SearchPage from "./pages/search.js";
 import SavedPage from "./pages/saved.js";
 
@@ -32,7 +32,7 @@ class App extends Component {
             <Route exact path="/saved" component={SavedPage}/>
             <Route component={SearchPage}/>
           </Switch>
-          {/* <Navbar />
+          {/* {/* <Navbar />
           <Jumbotron />
           <Search />
           <Results /> */}
