@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Results from "./../components/results";
-import Search from "./../components/search";
+import { Input, FormBtn } from "./../components/search";
 import API from "./../utils/API";
 // import { Link } from "react-router-dom";
 
@@ -22,15 +22,25 @@ class SearchPage extends Component {
         API.getBooks().then(res => console.log(res)).catch(err => console.log(err));
         // console.log(this.state);
     }
-
+    //Change all the search functions into individual components
     render() {
         return (
             <div>
-                <Search
+                {/* <Search
                     onChange={this.handleInputChange}
                     name="title"
                     onClick={this.getSearchQuery}
-                />
+                /> */}
+                <form>
+                    <h2 className="jumbotronTitle">Book Search</h2>
+                    <Input 
+                        onChange={this.handleInputChange}
+                        name="title"
+                    />
+                    <FormBtn 
+                        onClick={this.getSearchQuery}
+                    />
+                </form>
                 <Results />
             </div>
         )
