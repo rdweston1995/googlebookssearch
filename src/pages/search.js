@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Results from "./../components/results";
 import Search from "./../components/search";
+import API from "./../utils/API";
 // import { Link } from "react-router-dom";
 
 class SearchPage extends Component {
@@ -18,8 +19,8 @@ class SearchPage extends Component {
     }
     getSearchQuery = event => {
         // event.preventDefault();
-        
-        console.log(this.state);
+        API.getBooks().then(res => console.log(res)).catch(err => console.log(err));
+        // console.log(this.state);
     }
 
     render() {

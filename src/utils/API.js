@@ -1,0 +1,15 @@
+import Axios from "axios";
+import keys from "../keys";
+
+export default {
+    getBooks: function(query){
+        // console.log("https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=" + keys.google);
+        console.log("https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyA4xCXz7uVrKx1QisuTCDqLPf1q4bTiuR4");
+        console.log(keys.google);
+        // return Axios.get("https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=" + keys.google.key);
+        return Axios.get("https://www.googleapis.com/books/v1/volumes?q=Harry+Potter&key=AIzaSyA4xCXz7uVrKx1QisuTCDqLPf1q4bTiuR4");
+    },
+    getBook: function(){
+
+    }
+}
