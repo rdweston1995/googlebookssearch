@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Results from "./../components/results";
 import { Input, FormBtn } from "./../components/search";
 import API from "./../utils/API";
+import "./search.css";
 // import { Link } from "react-router-dom";
 
 class SearchPage extends Component {
@@ -15,13 +16,37 @@ class SearchPage extends Component {
         this.setState({
             [name]: value
         });
-        console.log(this.state.title);
+        // console.log(this.state.title);
     }
+
+    logResData = res => {
+        for(let i = 0; i< res.data.items.length; i++){
+            // console.log(res.data.items[i].volumeInfo);
+            this.state.books.push(res.data.items[i].volumeInfo);
+        }
+        console.log("BOOKS");
+        console.log(this.state.books);
+        console.log("END OF BOOKS");
+    }
+
     getSearchQuery = event => {
         // event.preventDefault();
-        API.getBooks().then(res => console.log(res)).catch(err => console.log(err));
+        event.preventDefault();
+        // API.getBooks().then(res => this.setState({books: res.data})).catch(err => console.log(err));
+        // API.getBooks().then(res => console.log(res.data.items)).catch(err => console.log(err));
+        // API.getBooks().then(res =>  for(let i = 0; i < res.data.items.length; i++){console.log(res.data.items[i].volumeInfo);}).catch(console.log(err));
+        // API.getBooks().then(res => this.logResData(res)).catch(err => console.log(err));
+        // API.getBooks().then(res => this.setState({books: res.data})).catch(err => console.log(err));
+        // API.getBooks().then(res => console.log(res.data.items)).catch(err => console.log(err));
+        API.getBooks(this.state.title).then(res => this.setState({books:res.data.items})).catch(err => console.log(err));
+        // console.log(this.state.books);
+        // console.log(this.state.books);
         // console.log(this.state);
     }
+
+    
+
+    
     //Change all the search functions into individual components
     render() {
         return (
@@ -41,7 +66,30 @@ class SearchPage extends Component {
                         onClick={this.getSearchQuery}
                     />
                 </form>
-                <Results />
+                <h2>Results</h2>
+                {!this.state.books.length ? (
+                    <h1 className="text-center">No Books to Display</h1>
+                ) : (
+                    <div className="resultsContainer col-12">
+                        {this.state.books.map(book => {
+                        // console.log(book.title);
+                            return (
+                                <Results
+                                    key={book.title}
+                                    title={book.volumeInfo.title}
+                                    subtitle={book.volumeInfo.subtitle}
+                                    authors={book.volumeInfo.authors}
+                                    description={book.volumeInfo.description}
+                                    image={book.volumeInfo.imageLinks.thumbnail}
+                                    infoLink={book.volumeInfo.infoLink}
+                                    testing={book.volumeInfo}
+                                />
+                            );
+                    })}
+                    </div>
+                    
+                )}
+                
             </div>
         )
     }

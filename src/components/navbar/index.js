@@ -10,9 +10,6 @@ function Navbar(){
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <ul className="navbar-nav">
-                    <li className="nav-item active">
-                        <a className="nav-link" href="/">Google Books</a>
-                    </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/">Search</a>
                     </li>
