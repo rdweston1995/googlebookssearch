@@ -1,0 +1,9 @@
+.searchBar{
+    text-align: center;
+}
+
+.searchBtn{
+    float:right;
+    width: 25%;
+    height: 50px;
+}
