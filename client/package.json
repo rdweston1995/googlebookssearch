@@ -1,6 +1,9 @@
 {
   "name": "client",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.16.0"
+  },
   "proxy": "http://localhost:3001/",
   "author": "rdweston1995",
   "dependencies": {
