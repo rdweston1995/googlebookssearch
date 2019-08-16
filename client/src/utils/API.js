@@ -12,7 +12,11 @@ export default {
         // return Axios.get("https://www.googleapis.com/books/v1/volumes?q=Harry Potter&key=AIzaSyA4xCXz7uVrKx1QisuTCDqLPf1q4bTiuR4");
         return Axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query + "&key=AIzaSyA4xCXz7uVrKx1QisuTCDqLPf1q4bTiuR4");
     },
-    getBook: function(){
+    getSavedBooks: function(){
+        return Axios.get("/api/books");
+    },
 
+    saveBook: function(bookData) {
+        return Axios.post("/api/books", bookData);
     }
 }

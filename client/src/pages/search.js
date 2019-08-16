@@ -24,9 +24,27 @@ class SearchPage extends Component {
             // console.log(res.data.items[i].volumeInfo);
             this.state.books.push(res.data.items[i].volumeInfo);
         }
-        console.log("BOOKS");
-        console.log(this.state.books);
-        console.log("END OF BOOKS");
+        // console.log("BOOKS");
+        // console.log(this.state.books);
+        // console.log("END OF BOOKS");
+    }
+
+    saveBook = event => {
+        // API.saveBook(props).then(res => console.log(res)).catch(err => console.log(err));
+        // console.log("test");
+        console.log(event);
+        const newObj = {
+            title: event.title,
+            subtitle: event.subtitle,
+            authors: event.authors[0],
+            description: event.description,
+            image: event.image,
+            infoLink: event.infoLink,
+        }
+
+        console.log(newObj);
+        // API.saveBook(event).then(res => console.log(res)).catch(err => console.log(err));
+        API.saveBook(newObj).then(res => console.log(res)).catch(err => console.log(err));
     }
 
     getSearchQuery = event => {
@@ -82,7 +100,7 @@ class SearchPage extends Component {
                                     description={book.volumeInfo.description}
                                     image={book.volumeInfo.imageLinks.thumbnail}
                                     infoLink={book.volumeInfo.infoLink}
-                                    testing={book.volumeInfo}
+                                    onClick = {this.saveBook}
                                 />
                             );
                     })}
