@@ -68,47 +68,54 @@ class SearchPage extends Component {
     //Change all the search functions into individual components
     render() {
         return (
-            <div>
-                {/* <Search
+            <div className="row test">
+                <div className="col test"></div>
+                <div className="col-8">
+                    <div className="searchResultsContainer">
+                        {/* <Search
                     onChange={this.handleInputChange}
                     name="title"
                     onClick={this.getSearchQuery}
                 /> */}
-                <form>
-                    <h2 className="jumbotronTitle">Book Search</h2>
-                    <Input
-                        onChange={this.handleInputChange}
-                        name="title"
-                    />
-                    <FormBtn
-                        onClick={this.getSearchQuery}
-                    />
-                </form>
-                <h2 className="resultsTitle">Results</h2>
-                {!this.state.books.length ? (
-                    <h1 className="text-center">No Books to Display</h1>
-                ) : (
-                        <div className="resultsContainer col-12">
-                            {this.state.books.map(book => {
-                                // console.log(book.title);
-                                return (
-                                    <Results
-                                        key={book.title}
-                                        title={book.volumeInfo.title}
-                                        subtitle={book.volumeInfo.subtitle}
-                                        authors={book.volumeInfo.authors}
-                                        description={book.volumeInfo.description}
-                                        image={book.volumeInfo.imageLinks.thumbnail}
-                                        infoLink={book.volumeInfo.infoLink}
-                                        onClick={this.saveBook}
-                                    />
-                                );
-                            })}
-                        </div>
+                        <form>
+                            <h2 className="jumbotronTitle">Book Search</h2>
+                            <Input
+                                onChange={this.handleInputChange}
+                                name="title"
+                            />
+                            <FormBtn
+                                onClick={this.getSearchQuery}
+                            />
+                        </form>
+                        <h2 className="resultsTitle">Results</h2>
+                        {!this.state.books.length ? (
+                            <h1 className="noBooks text-center">No Books to Display</h1>
+                        ) : (
+                                <div className="resultsContainer col-12">
+                                    {this.state.books.map(book => {
+                                        // console.log(book.title);
+                                        return (
+                                            <Results
+                                                key={book.title}
+                                                title={book.volumeInfo.title}
+                                                subtitle={book.volumeInfo.subtitle}
+                                                authors={book.volumeInfo.authors}
+                                                description={book.volumeInfo.description}
+                                                image={book.volumeInfo.imageLinks.thumbnail}
+                                                infoLink={book.volumeInfo.infoLink}
+                                                onClick={this.saveBook}
+                                            />
+                                        );
+                                    })}
+                                </div>
 
-                    )}
+                            )}
 
+                    </div>
+                </div>
+                <div className="col"></div>
             </div>
+
         )
     }
 }
